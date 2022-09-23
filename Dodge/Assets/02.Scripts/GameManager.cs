@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameoverText; // 게임오버 시 활성화할 텍스트 게임 오브젝트
     public TextMeshProUGUI TimeText; // 생존 시간을 표시할 TextMeshPro 컴포넌트
-    public Text recordText; // 최고 기록을 표시할 TextMeshPro
+    public TextMeshProUGUI recordText; // 최고 기록을 표시할 TextMeshPro
 
     private float surviveTime; // 생존 시간
     private bool isGameover; // 게임오버 상태
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         // 생존 시간과 게임오버 상태 초기화
         surviveTime = 0f;
         isGameover = false;
-        
+
     }
 
     // Update is called once per frame
@@ -44,8 +44,19 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-                // 현재 상태를 게임오버 상태로 전환
-                isGameover = true;
-                // 게임오버 텍스트 게임 오브젝트를 활성화
-                gameoverText.SetActive(true);
+
+    public void EndGame()
+    {
+        // 현재 상태를 게임오버 상태로 전환
+        isGameover = true;
+        // 게임오버 텍스트 게임 오브젝트 활성화
+        gameoverText.SetActive(true);
+
+        // BasicTime 키로 저장된 이전까지의 최고 기록 가져오기
+        float bestTime = PlayerPrefs.GetFloat("bestTime");
+
+        // 이전까지의 최고기록보다 현재 생존 시간이 더 큰다면
+
+        // 최고 기록 값을 현재 생존 값으로 변경
+    }
 }
